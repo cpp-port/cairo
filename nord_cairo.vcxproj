@@ -204,7 +204,7 @@
     <ClCompile Include="src\cairo-compositor.c" />
     <ClCompile Include="src\cairo-contour.c" />
     <ClCompile Include="src\cairo-damage.c" />
-    <ClCompile Include="src\cairo-debug.c" />
+    <ClCompile Include="src\cairo-Debug.c" />
     <ClCompile Include="src\cairo-default-context.c" />
     <ClCompile Include="src\cairo-deflate-stream.c" />
     <ClCompile Include="src\cairo-device.c" />
