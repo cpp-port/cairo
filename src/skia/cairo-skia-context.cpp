@@ -919,12 +919,12 @@ _cairo_skia_context_user_to_device (void *abstract_cr,
 
 static void
 _cairo_skia_context_user_to_device_distance (void *abstract_cr,
-					     double *Δx,
-					     double *Δy)
+					     double *dx,
+					     double *dy)
 {
     cairo_skia_context_t *cr = (cairo_skia_context_t *) abstract_cr;
 
-    cairo_matrix_transform_distance (&cr->matrix, Δx, Δy);
+    cairo_matrix_transform_distance (&cr->matrix, dx, dy);
 }
 
 static void
@@ -945,8 +945,8 @@ _cairo_skia_context_device_to_user (void *abstract_cr,
 
 static void
 _cairo_skia_context_device_to_user_distance (void *abstract_cr,
-					     double *Δx,
-					     double *Δy)
+					     double *dx,
+					     double *dy)
 {
     cairo_skia_context_t *cr = (cairo_skia_context_t *) abstract_cr;
     cairo_matrix_t inverse;
@@ -956,7 +956,7 @@ _cairo_skia_context_device_to_user_distance (void *abstract_cr,
     status = cairo_matrix_invert (&inverse);
     assert (CAIRO_STATUS_SUCCESS == status);
 
-    cairo_matrix_transform_distance (&inverse, Δx, Δy);
+    cairo_matrix_transform_distance (&inverse, dx, dy);
 }
 
 /* Path constructor */
@@ -987,10 +987,10 @@ user_to_device_point (cairo_skia_context_t *cr, double *x, double *y)
 }
 
 static void
-user_to_device_distance (cairo_skia_context_t *cr, double *Δx, double *Δy)
+user_to_device_distance (cairo_skia_context_t *cr, double *dx, double *dy)
 {
-    cairo_matrix_transform_distance (&cr->matrix, Δx, Δy);
-    cairo_matrix_transform_distance (&cr->target->image.base.device_transform, Δx, Δy);
+    cairo_matrix_transform_distance (&cr->matrix, dx, dy);
+    cairo_matrix_transform_distance (&cr->target->image.base.device_transform, dx, dy);
 }
 
 static cairo_status_t
@@ -1051,22 +1051,22 @@ _cairo_skia_context_arc_to (void *abstract_cr,
 }
 
 static cairo_status_t
-_cairo_skia_context_rel_move_to (void *abstract_cr, double Δx, double Δy)
+_cairo_skia_context_rel_move_to (void *abstract_cr, double dx, double dy)
 {
     cairo_skia_context_t *cr = (cairo_skia_context_t *) abstract_cr;
 
-    user_to_device_distance (cr, &Δx, &Δy);
-    cr->path->rMoveTo (SkFloatToScalar (Δx), SkFloatToScalar (Δy));
+    user_to_device_distance (cr, &dx, &dy);
+    cr->path->rMoveTo (SkFloatToScalar (dx), SkFloatToScalar (dy));
     return CAIRO_STATUS_SUCCESS;
 }
 
 static cairo_status_t
-_cairo_skia_context_rel_line_to (void *abstract_cr, double Δx, double Δy)
+_cairo_skia_context_rel_line_to (void *abstract_cr, double dx, double dy)
 {
     cairo_skia_context_t *cr = (cairo_skia_context_t *) abstract_cr;
 
-    user_to_device_distance (cr, &Δx, &Δy);
-    cr->path->rLineTo (SkFloatToScalar (Δx), SkFloatToScalar (Δy));
+    user_to_device_distance (cr, &dx, &dy);
+    cr->path->rLineTo (SkFloatToScalar (dx), SkFloatToScalar (dy));
     return CAIRO_STATUS_SUCCESS;
 }
 

@@ -835,7 +835,7 @@ struct i915_shader {
 	    struct {
 		float red, green, blue, alpha;
 	    } color0, color1;
-	    float Δx, Δy, offset;
+	    float dx, dy, offset;
 	} linear;
 	struct i915_shader_radial {
 	    struct i915_shader_base base;
@@ -1213,7 +1213,7 @@ static inline double cairo_const
 i915_shader_linear_texcoord (const struct i915_shader_linear *l,
 			     double src_x, double src_y)
 {
-    return l->Δx * src_x + l->Δy * src_y + l->offset;
+    return l->dx * src_x + l->dy * src_y + l->offset;
 }
 
 cairo_private cairo_status_t
