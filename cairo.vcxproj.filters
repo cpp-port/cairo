@@ -580,7 +580,7 @@
     <ClInclude Include="src\win32\cairo-win32-private.h">
       <Filter>Header Files\win32</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
+    <ClInclude Include="aaa_config.h">
       <Filter>Header Files\cfg</Filter>
     </ClInclude>
   </ItemGroup>
