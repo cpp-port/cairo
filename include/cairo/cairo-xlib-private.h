@@ -49,7 +49,7 @@
 #include <cairo/cairo-scaled-font-private.h>
 #include <cairo/cairo-surface-private.h>
 
-#include <pixman.h>
+#include <pixman/pixman.h>
 #include <string.h>
 
 typedef struct _cairo_xlib_display cairo_xlib_display_t;

@@ -28,7 +28,7 @@
 
 #include <cairo/cairo-perf.h>
 
-#include <pixman.h>
+#include <pixman/pixman.h>
 
 static cairo_time_t
 clip_paint (cairo_t *cr, int width, int height, int loops)

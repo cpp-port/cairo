@@ -57,7 +57,7 @@
 #include <xcb/xcb.h>
 #include <xcb/render.h>
 #include <xcb/xcbext.h>
-#include <pixman.h>
+#include <pixman/pixman.h>
 
 #define XLIB_COORD_MAX 32767
 

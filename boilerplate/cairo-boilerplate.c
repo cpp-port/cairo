@@ -29,7 +29,7 @@
 #include <cairo/cairo-boilerplate-private.h>
 #include <cairo/cairo-boilerplate-scaled-font.h>
 
-#include <pixman.h>
+#include <pixman/pixman.h>
 
 #include <cairo-types-private.h>
 #include <cairo-scaled-font-private.h>

@@ -46,7 +46,7 @@
 #include <cairo/cairo-recording-surface-inline.h>
 #include <cairo/cairo-surface-clipper-private.h>
 
-#include <pixman.h>
+#include <pixman/pixman.h>
 #include <VG/openvg.h>
 
 //#define OPENVG_DEBUG
