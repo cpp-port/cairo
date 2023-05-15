@@ -46,8 +46,11 @@
 
 #define GL_GLEXT_PROTOTYPES
 
-#ifdef WIN32 // included by camilo on 2021-07-08 22:30 BRT
-#include <GL/glew.h>
+#ifdef WIN32
+// included by camilo on 2021-07-08 22:30 BRT
+//#include <GL/glew.h>
+// changed by camilo on 2023-05-14 19:49 BRT
+//#include <glad.h>
 #endif
 
 
@@ -72,9 +75,14 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #elif CAIRO_HAS_GL_SURFACE
-#include <GL/gl.h>
-#include <GL/glext.h>
+//#include <GL/gl.h>
+//#include <GL/glext.h>
 #endif
+
+// changed by camilo on 2023-05-14 19:50 BRT
+#define GLAD_GLAPI_EXPORT
+#include <glad.h>
+
 
 #include <cairo/cairo-gl-ext-def-private.h>
 

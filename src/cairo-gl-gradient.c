@@ -40,9 +40,16 @@
 
 #include <cairo/cairoint.h>
 
-#ifdef WIN32 // included by camilo on 2021-07-08 22:30 BRT
-#include <GL/glew.h>
-#endif
+//#ifdef WIN32 // included by camilo on 2021-07-08 22:30 BRT
+//#include <GL/glew.h>
+//#endif
+
+
+
+// changed by camilo on 2023-05-14 19:50 BRT
+#define GLAD_GLAPI_EXPORT
+#include <glad.h>
+
 
 #include <cairo/cairo-error-private.h>
 #include <cairo/cairo-gl-gradient-private.h>

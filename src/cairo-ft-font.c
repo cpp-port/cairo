@@ -69,7 +69,7 @@
 
 #if HAVE_UNISTD_H
 #include <unistd.h>
-#else
+#elif !((defined(__WIN32__) && !defined(__WINE__)) || defined(_MSC_VER))
 #define access(p, m) 0
 #endif
 

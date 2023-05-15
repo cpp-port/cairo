@@ -58,9 +58,17 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #elif CAIRO_HAS_GL_SURFACE
-#include <GL/gl.h>
-#include <GL/glext.h>
+// changed by camilo on 2023-05-14 19:50 BRT
+//#define GLAD_GLAPI_EXPORT
+//#include <glad.h>
+//#include <GL/gl.h>
+//#include <GL/glext.h>
 #endif
+
+// changed by camilo on 2023-05-14 19:50 BRT
+#define GLAD_GLAPI_EXPORT
+#include <glad.h>
+
 
 #define CAIRO_GL_GRADIENT_CACHE_SIZE 4096
 
