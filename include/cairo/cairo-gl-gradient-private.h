@@ -63,11 +63,20 @@
 //#include <glad.h>
 //#include <GL/gl.h>
 //#include <GL/glext.h>
-#endif
-
-// changed by camilo on 2023-05-14 19:50 BRT
+#elif CAIRO_HAS_GLAD
+ // changed by camilo on 2023-05-14 19:50 BRT
 #define GLAD_GLAPI_EXPORT
 #include <glad.h>
+#ifdef WIN32
+// included by camilo on 2021-07-08 22:30 BRT
+//#include <GL/glew.h>
+// changed by camilo on 2023-05-14 19:49 BRT
+//#include <glad.h>
+#endif
+#endif
+//// changed by camilo on 2023-05-14 19:50 BRT
+//#define GLAD_GLAPI_EXPORT
+//#include <glad.h>
 
 
 #define CAIRO_GL_GRADIENT_CACHE_SIZE 4096

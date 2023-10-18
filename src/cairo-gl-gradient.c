@@ -46,9 +46,9 @@
 
 
 
-// changed by camilo on 2023-05-14 19:50 BRT
-#define GLAD_GLAPI_EXPORT
-#include <glad.h>
+//// changed by camilo on 2023-05-14 19:50 BRT
+//#define GLAD_GLAPI_EXPORT
+//#include <glad.h>
 
 
 #include <cairo/cairo-error-private.h>

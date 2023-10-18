@@ -61,16 +61,16 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <Import Project="..\..\..\operating_system\operating_system-android\Common.props" />
+    <Import Project="..\..\..\operating_system\operating_system-android\port.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <Import Project="..\..\..\operating_system\operating_system-android\Common.props" />
+    <Import Project="..\..\..\operating_system\operating_system-android\port.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <Import Project="..\..\..\operating_system\operating_system-android\Common.props" />
+    <Import Project="..\..\..\operating_system\operating_system-android\port.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <Import Project="..\..\..\operating_system\operating_system-android\Common.props" />
+    <Import Project="..\..\..\operating_system\operating_system-android\port.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -102,13 +102,11 @@
       <PreprocessorDefinitions>CAIRO_HAS_UTF8_TO_UTF16;CAIRO_HAS_GLESV2_SURFACE;CAIRO_HAS_EGL_FUNCTIONS;HAVE_CONFIG_H</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-attributes -Wno-sign-compare -Wno-comment -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-unknown-pragmas -Wno-unused-function -Wno-unused-variable -Wno-unused-value -Wno-unknown-pragmas -Wno-unused-function -Wno-implicit-int -Wno-unused-variable  -Wno-pointer-sign -Wdynamic-exception-spec -Wregister -Wno-enum-conversion -Wno-tautological-constant-out-of-range-compare</AdditionalOptions>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
-      <ObjectFileName>$(IntDir)%(RelativeDir)%(filename).o</ObjectFileName>
       <ExceptionHandling>Enabled</ExceptionHandling>
       <CLanguageStandard>c11</CLanguageStandard>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)/src;$(SolutionDir)../../../source/port/include/operating_system/android/cairo;$(SolutionDir)../../../source/port/include/operating_system/android/pixman;$(__sensitive)/sensitive/include;$(SolutionDir)../../../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../../../operating_system/operating_system-android/include;$(SolutionDir)../../../operating_system/operating_system-android;$(SolutionDir)../../../operating_system/operating_system-posix;$(SolutionDir)../../../source/app/include;$(SolutionDir)../../../source/port/include/operating_system/android;$(SolutionDir)../../../source/port/include;$(SolutionDir)../../../source/port;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../../../source;$(SolutionDir)../../../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link />
     <Link>
@@ -119,7 +117,6 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <AdditionalOptions>-Wno-attributes -Wno-sign-compare -Wno-comment -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-unknown-pragmas -Wno-unused-function -Wno-unused-variable -Wno-unused-value -Wno-unknown-pragmas -Wno-unused-function -Wno-implicit-int -Wno-unused-variable  -Wno-pointer-sign -Wdynamic-exception-spec -Wregister -Wno-enum-conversion -Wno-tautological-constant-out-of-range-compare</AdditionalOptions>
-      <ObjectFileName>$(IntDir)%(RelativeDir)%(filename).o</ObjectFileName>
       <ExceptionHandling>Enabled</ExceptionHandling>
       <CLanguageStandard>c11</CLanguageStandard>
       <CppLanguageStandard>c++1z</CppLanguageStandard>
@@ -127,7 +124,6 @@
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)/src;$(SolutionDir)../../../source/port/include/operating_system/android/cairo;$(SolutionDir)../../../source/port/include/operating_system/android/pixman;$(__sensitive)/sensitive/include;$(SolutionDir)../../../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../../../operating_system/operating_system-android/include;$(SolutionDir)../../../operating_system/operating_system-android;$(SolutionDir)../../../operating_system/operating_system-posix;$(SolutionDir)../../../source/app/include;$(SolutionDir)../../../source/port/include/operating_system/android;$(SolutionDir)../../../source/port/include;$(SolutionDir)../../../source/port;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../../../source;$(SolutionDir)../../../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link />
     <Link>
@@ -137,7 +133,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <ObjectFileName>$(IntDir)%(RelativeDir)%(filename).o</ObjectFileName>
       <ForcedIncludeFiles>
       </ForcedIncludeFiles>
       <CLanguageStandard>c11</CLanguageStandard>
@@ -149,7 +144,6 @@
       <AdditionalOptions>-Wno-attributes -Wno-sign-compare -Wno-comment -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-unknown-pragmas -Wno-unused-function -Wno-unused-variable -Wno-unused-value -Wno-unknown-pragmas -Wno-unused-function -Wno-implicit-int -Wno-unused-variable  -Wno-pointer-sign -Wdynamic-exception-spec -Wregister -Wno-enum-conversion -Wno-tautological-constant-out-of-range-compare</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)/src;$(SolutionDir)../../../source/port/include/operating_system/android/cairo;$(SolutionDir)../../../source/port/include/operating_system/android/pixman;$(__sensitive)/sensitive/include;$(SolutionDir)../../../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../../../operating_system/operating_system-android/include;$(SolutionDir)../../../operating_system/operating_system-android;$(SolutionDir)../../../operating_system/operating_system-posix;$(SolutionDir)../../../source/app/include;$(SolutionDir)../../../source/port/include/operating_system/android;$(SolutionDir)../../../source/port/include;$(SolutionDir)../../../source/port;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../../../source;$(SolutionDir)../../../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)storage-android\third\library\$(Platform)\$(Configuration)\;$(__operating_system)storage-android\library\$(Platform)\$(Configuration)\;$(SolutionDir)..\..\..\time\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\i686-linux-android\$(ToolchainVersion);$(StlLibraryPath)</AdditionalLibraryDirectories>
@@ -158,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <ObjectFileName>$(IntDir)%(RelativeDir)%(filename).o</ObjectFileName>
       <ExceptionHandling>Enabled</ExceptionHandling>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -169,7 +162,6 @@
       <PreprocessorDefinitions>CAIRO_HAS_UTF8_TO_UTF16;CAIRO_HAS_GLESV2_SURFACE;CAIRO_HAS_EGL_FUNCTIONS;HAVE_CONFIG_H</PreprocessorDefinitions>
       <AdditionalOptions>-Wno-attributes -Wno-sign-compare -Wno-comment -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-unknown-pragmas -Wno-unused-function -Wno-unused-variable -Wno-unused-value -Wno-unknown-pragmas -Wno-unused-function -Wno-implicit-int -Wno-unused-variable  -Wno-pointer-sign -Wdynamic-exception-spec -Wregister -Wno-enum-conversion -Wno-tautological-constant-out-of-range-compare</AdditionalOptions>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)/src;$(SolutionDir)../../../source/port/include/operating_system/android/cairo;$(SolutionDir)../../../source/port/include/operating_system/android/pixman;$(__sensitive)/sensitive/include;$(SolutionDir)../../../source/include;$(__operating_system)third-android/$(PlatformName)/$(Configuration)/include;$(__operating_system)third-android/include;$(__operating_system)third-android/third/include;$(__operating_system)third-android/third/include/include;$(SolutionDir)../../../operating_system/operating_system-android/include;$(SolutionDir)../../../operating_system/operating_system-android;$(SolutionDir)../../../operating_system/operating_system-posix;$(SolutionDir)../../../source/app/include;$(SolutionDir)../../../source/port/include/operating_system/android;$(SolutionDir)../../../source/port/include;$(SolutionDir)../../../source/port;.;$(ProjectDir);$(ProjectDir)../;$(ProjectDir)../../;$(SolutionDir)../../../;$(SolutionDir)../../../source;$(SolutionDir)../../../source/app;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);$(__operating_system)storage-android\third\library\$(Platform)\$(Configuration)\;$(__operating_system)storage-android\library\$(Platform)\$(Configuration)\;$(SolutionDir)..\..\..\time\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories);$(ToolchainPrebuiltPath)\lib\gcc\i686-linux-android\$(ToolchainVersion);$(StlLibraryPath)</AdditionalLibraryDirectories>
