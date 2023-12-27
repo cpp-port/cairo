@@ -68,11 +68,8 @@
 #elif CAIRO_HAS_GLESV2_SURFACE
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
-#elif CAIRO_HAS_GL_SURFACE
-//#include <GL/gl.h>
-//#include <GL/glext.h>
 #elif CAIRO_HAS_GLAD
-// changed by camilo on 2023-05-14 19:50 BRT
+ // changed by camilo on 2023-05-14 19:50 BRT
 #define GLAD_GLAPI_EXPORT
 #include <glad.h>
 #ifdef WIN32
@@ -81,6 +78,9 @@
 // changed by camilo on 2023-05-14 19:49 BRT
 //#include <glad.h>
 #endif
+#elif CAIRO_HAS_GL_SURFACE
+#include <GL/gl.h>
+#include <GL/glext.h>
 #endif
 
 
