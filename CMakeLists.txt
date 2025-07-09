@@ -317,6 +317,9 @@ add_library(${PROJECT_NAME}
   SHARED ${library_source}
 )
 
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE HAVE_CONFIG_H)
+
 if(MSVC)
   target_compile_options(${PROJECT_NAME} PRIVATE /wd5286)
   target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} 	Msimg32)
@@ -335,6 +338,11 @@ if(${this_system_libraries})
   target_link_libraries(${PROJECT_NAME} PRIVATE ${this_system_libraries})
 endif()
 
+list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/../../../operating_system/operating_system-${PLATFORM_NAME}/configuration/${PROJECT_NAME})
+
+
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${library_include_directories})
 
 
 
