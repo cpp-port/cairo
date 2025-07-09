@@ -320,9 +320,21 @@ add_library(${PROJECT_NAME}
 if(MSVC)
   target_compile_options(${PROJECT_NAME} PRIVATE /wd5286)
   target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} 	Msimg32)
-  endif()
+
+  set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON )
+    target_compile_options(${PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+    target_link_options(${PROJECT_NAME} PRIVATE "/DEFAULTLIB:msvcrt$<$<CONFIG:Debug>:d>")
+    target_link_options(${PROJECT_NAME} PRIVATE "/IMPLIB:${LIBRARY_OUTPUT_PATH}/${PROJECT_NAME}.lib")
+    #    target_link_options(${PROJECT_NAME} PRIVATE "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.def")
+
+
+endif()
 
 
 if(${this_system_libraries})
   target_link_libraries(${PROJECT_NAME} PRIVATE ${this_system_libraries})
 endif()
+
+
+
+
