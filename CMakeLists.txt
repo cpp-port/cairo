@@ -1,6 +1,176 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.16)
 project(cairo C)
 
+if(${BEOS})
+  list(APPEND library_source
+
+  src/cairo-beos-surface.cpp
+  )
+endif()
+
+if(${OS2})
+  list(APPEND library_source
+
+
+          src/cairo-os2-surface.c
+  )
+endif()
+
+if(${HAS_XCB})
+  list(APPEND library_source
+
+
+          src/cairo-xcb-connection.c
+src/cairo-xcb-connection-core.c
+src/cairo-xcb-connection-render.c
+src/cairo-xcb-connection-shm.c
+src/cairo-xcb-resources.c
+src/cairo-xcb-screen.c
+src/cairo-xcb-shm.c
+src/cairo-xcb-surface.c
+src/cairo-xcb-surface-core.c
+src/cairo-xcb-surface-render.c
+
+  )
+endif()
+
+
+if(${HAS_X11})
+  list(APPEND library_source
+
+
+          src/cairo-xlib-core-compositor.c
+          src/cairo-xlib-display.c
+          src/cairo-xlib-fallback-compositor.c
+          src/cairo-xlib-render-compositor.c
+          src/cairo-xlib-screen.c
+          src/cairo-xlib-source.c
+          src/cairo-xlib-surface.c
+          src/cairo-xlib-surface-shm.c
+          src/cairo-xlib-visual.c
+          src/cairo-xlib-xcb-surface.c
+
+  )
+endif()
+
+
+if(${HAS_COGL})
+  list(APPEND library_source
+
+          src/cairo-cogl-context.c
+          src/cairo-cogl-gradient.c
+          src/cairo-cogl-surface.c
+          src/cairo-cogl-utils.c
+
+
+  )
+endif()
+
+
+if(${HAS_DIRECTFB})
+ list(APPEND library_source
+
+         src/cairo-directfb-surface.c
+
+
+ )
+endif()
+
+if(${HAS_GL})
+  list(APPEND library_source
+
+          src/cairo-gl-composite.c
+          src/cairo-gl-device.c
+          src/cairo-gl-dispatch.c
+          src/cairo-gl-glyphs.c
+          src/cairo-gl-gradient.c
+          src/cairo-gl-info.c
+          src/cairo-gl-msaa-compositor.c
+          src/cairo-gl-operand.c
+          src/cairo-gl-shaders.c
+          src/cairo-gl-source.c
+          src/cairo-gl-spans-compositor.c
+          src/cairo-gl-surface.c
+          src/cairo-gl-traps-compositor.c
+  )
+endif()
+
+
+if(${HAS_GLX})
+  list(APPEND library_source
+
+
+          src/cairo-glx-context.c
+
+  )
+endif()
+
+if(${HAS_EGL})
+  list(APPEND library_source
+
+src/cairo-egl-context.c
+
+  )
+endif()
+
+
+if(${HAS_WGL})
+  list(APPEND library_source
+
+          src/cairo-wgl-context.c
+
+
+  )
+endif()
+
+
+
+if(${__APPLE__})
+  list(APPEND library_source
+
+          src/cairo-quartz-font.c
+src/cairo-quartz-image-surface.c
+src/cairo-quartz-surface.c
+
+
+  )
+endif()
+
+
+if(${HAS_QT})
+  list(APPEND library_source
+
+  src/cairo-qt-surface.cpp
+
+
+
+  )
+endif()
+
+
+
+
+if(${HAS_OPENVG})
+list(APPEND library_source
+        src/cairo-vg-surface.c
+
+)
+endif()
+
+
+if(${WIN32})
+  list(APPEND library_source
+          src/win32/cairo-win32-debug.c
+          src/win32/cairo-win32-device.c
+          src/win32/cairo-win32-display-surface.c
+          src/win32/cairo-win32-font.c
+          src/win32/cairo-win32-gdi-compositor.c
+          src/win32/cairo-win32-printing-surface.c
+          src/win32/cairo-win32-private.h
+          src/win32/cairo-win32-surface.c
+          src/win32/cairo-win32-system.c
+  )
+endif()
 
 list(APPEND library_source
         src/cairo.c
@@ -13,7 +183,6 @@ list(APPEND library_source
         src/cairo-bentley-ottmann.c
         src/cairo-bentley-ottmann-rectangular.c
         src/cairo-bentley-ottmann-rectilinear.c
-        src/cairo-beos-surface.cpp
         src/cairo-botor-scan-converter.c
         src/cairo-boxes.c
         src/cairo-boxes-intersect.c
@@ -26,10 +195,6 @@ list(APPEND library_source
         src/cairo-clip-region.c
         src/cairo-clip-surface.c
         src/cairo-clip-tor-scan-converter.c
-        src/cairo-cogl-context.c
-        src/cairo-cogl-gradient.c
-        src/cairo-cogl-surface.c
-        src/cairo-cogl-utils.c
         src/cairo-color.c
         src/cairo-composite-rectangles.c
         src/cairo-compositor.c
@@ -39,9 +204,7 @@ list(APPEND library_source
         src/cairo-default-context.c
         src/cairo-deflate-stream.c
         src/cairo-device.c
-        src/cairo-directfb-surface.c
-        src/cairo-egl-context.c
-        src/cairo-error.c
+        #src/cairo-error.c
         src/cairo-fallback-compositor.c
         src/cairo-features.pc.in
         src/cairo-features-uninstalled.pc.in
@@ -53,20 +216,6 @@ list(APPEND library_source
         src/cairo-freed-pool.c
         src/cairo-freelist.c
         src/cairo-ft-font.c
-        src/cairo-gl-composite.c
-        src/cairo-gl-device.c
-        src/cairo-gl-dispatch.c
-        src/cairo-gl-glyphs.c
-        src/cairo-gl-gradient.c
-        src/cairo-gl-info.c
-        src/cairo-gl-msaa-compositor.c
-        src/cairo-gl-operand.c
-        src/cairo-gl-shaders.c
-        src/cairo-gl-source.c
-        src/cairo-gl-spans-compositor.c
-        src/cairo-gl-surface.c
-        src/cairo-gl-traps-compositor.c
-        src/cairo-glx-context.c
         src/cairo-gstate.c
         src/cairo-hash.c
         src/cairo-hull.c
@@ -85,7 +234,6 @@ list(APPEND library_source
         src/cairo-mutex.c
         src/cairo-no-compositor.c
         src/cairo-observer.c
-        src/cairo-os2-surface.c
         src/cairo-output-stream.c
         src/cairo-paginated-surface.c
         src/cairo-path.c
@@ -109,10 +257,6 @@ list(APPEND library_source
         src/cairo-polygon-intersect.c
         src/cairo-polygon-reduce.c
         src/cairo-ps-surface.c
-        src/cairo-qt-surface.cpp
-        src/cairo-quartz-font.c
-        src/cairo-quartz-image-surface.c
-        src/cairo-quartz-surface.c
         src/cairo-raster-source-pattern.c
         src/cairo-recording-surface.c
         src/cairo-rectangle.c
@@ -157,35 +301,26 @@ list(APPEND library_source
         src/cairo-uninstalled.pc.in
         src/cairo-user-font.c
         src/cairo-version.c
-        src/cairo-vg-surface.c
-        src/cairo-wgl-context.c
         src/cairo-wideint.c
-        src/cairo-xcb-connection.c
-        src/cairo-xcb-connection-core.c
-        src/cairo-xcb-connection-render.c
-        src/cairo-xcb-connection-shm.c
-        src/cairo-xcb-resources.c
-        src/cairo-xcb-screen.c
-        src/cairo-xcb-shm.c
-        src/cairo-xcb-surface.c
-        src/cairo-xcb-surface-core.c
-        src/cairo-xcb-surface-render.c
-        src/cairo-xlib-core-compositor.c
-        src/cairo-xlib-display.c
-        src/cairo-xlib-fallback-compositor.c
-        src/cairo-xlib-render-compositor.c
-        src/cairo-xlib-screen.c
-        src/cairo-xlib-source.c
-        src/cairo-xlib-surface.c
-        src/cairo-xlib-surface-shm.c
-        src/cairo-xlib-visual.c
-        src/cairo-xlib-xcb-surface.c
         src/cairo-xml-surface.c
+)
+
+
+list(APPEND library_references
+        pixman
+        png
+        freetype
+zlib
 )
 
 add_library(${PROJECT_NAME}
   SHARED ${library_source}
 )
+
+if(MSVC)
+  target_compile_options(${PROJECT_NAME} PRIVATE /wd5286)
+  target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references} 	Msimg32)
+  endif()
 
 
 if(${this_system_libraries})
