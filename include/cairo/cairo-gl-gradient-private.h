@@ -60,7 +60,7 @@
 #elif CAIRO_HAS_GLAD
  // changed by camilo on 2023-05-14 19:50 BRT
 #define GLAD_GLAPI_EXPORT
-#include <glad.h>
+#include <glad/glad.h>
 #ifdef WIN32
 // included by camilo on 2021-07-08 22:30 BRT
 //#include <GL/glew.h>
