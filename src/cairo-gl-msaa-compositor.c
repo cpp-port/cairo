@@ -638,7 +638,10 @@ query_surface_capabilities (cairo_gl_surface_t *surface)
     _cairo_gl_context_set_destination (ctx, surface, FALSE);
 
     glGetIntegerv(GL_SAMPLES, &samples);
-    glGetIntegerv(GL_STENCIL_BITS, &stencil_bits);
+    //glGetIntegerv(GL_STENCIL_BITS, &stencil_bits);
+    glGetFramebufferAttachmentParameteriv(
+		 GL_DRAW_FRAMEBUFFER, GL_STENCIL, GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE,
+                                          &stencil_bits);
     surface->supports_stencil = stencil_bits > 0;
     surface->supports_msaa = samples > 1;
     surface->num_samples = samples;
