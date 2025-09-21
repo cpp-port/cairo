@@ -44,7 +44,11 @@
 
 #include <stdio.h>
 #include <errno.h>
+#if defined(USE_PORT_PNG)
+#include <port_png/png.h>
+#else
 #include <png.h>
+#endif
 
 /**
  * SECTION:cairo-png

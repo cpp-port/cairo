@@ -301,10 +301,22 @@ list(APPEND library_source
    src/cairo-xml-surface.c
 )
 
+if(${USE_PORT_PNG})
+   list(APPEND library_references
+   port_png
+   )
+else()
+
+   list(APPEND library_references
+      png
+   )
+
+endif()
+
+
 
 list(APPEND library_references
    pixman
-   png
    freetype
    zlib
 )
