@@ -1661,7 +1661,7 @@
     <ProjectReference Include="..\..\graphics3d\glad\glad.vcxproj">
       <Project>{664e6f0d-6784-4760-9565-d54f8eb1edf4}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\imaging\png\png.vcxproj">
+    <ProjectReference Include="..\..\imaging\port_png\port_png.vcxproj">
       <Project>{7db10b50-ce00-4d7a-b322-6824f05d2fcb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\freetype\freetype.vcxproj">
