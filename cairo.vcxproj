@@ -459,6 +459,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ASanStaticDebug|Win32'">
     <Midl>
@@ -699,6 +702,9 @@
       <LinkTimeCodeGeneration>true</LinkTimeCodeGeneration>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -927,6 +933,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='StaticDebug|ARM64'">
     <Midl>
@@ -1005,6 +1014,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ASanStaticDebug|x64'">
     <Midl>
@@ -1399,6 +1411,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='StaticRelease|ARM64'">
     <Midl>
@@ -1481,6 +1496,9 @@
     <Lib>
       <SubSystem>Windows</SubSystem>
     </Lib>
+    <PreBuildEvent>
+      <Command> </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="cairo.def" />
