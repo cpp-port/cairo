@@ -31071,7 +31071,7 @@ CommitDate: Tue Jun 2 00:20:08 2009 -0700
     [gl] Drop use of packed datatypes where it's disallowed.
     
     I had naively assumed that GL image specification let you do useful things
-    and describe the most common datatypes in pgraphics, since we do things that
+    and describe the most common datatypes in pdraw2dgraphics, since we do things that
     way inside of the DRI drivers.  Silly me.  GL_BGR and GL_RGB can't do
     GL_UNSIGNED_INT_8_8_8_8{,_REV}, so no specifying 24-depth 32-bpp data with
     implicit alpha.  GL_BGR can't even do r5g6b5!
