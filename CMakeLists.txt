@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(cairo C)
 
+
+message("CMake <<== Trash : ${PROJECT_NAME}")
+
+
+
 if (${BEOS})
    list(APPEND library_source
 
@@ -318,8 +323,14 @@ endif()
 list(APPEND library_references
    pixman
    freetype
-   zlib
 )
+
+if(${LINUX} OR ${__BSD__} OR ${__ANDROID__})
+   list(APPEND library_references z)
+else()
+   list(APPEND library_references zlib)
+endif()
+
 
 add_library(${PROJECT_NAME}
    SHARED ${library_source}
@@ -337,7 +348,7 @@ if (MSVC)
    target_link_options(${PROJECT_NAME} PRIVATE "/DEFAULTLIB:msvcrt$<$<CONFIG:Debug>:d>")
    target_link_options(${PROJECT_NAME} PRIVATE "/IMPLIB:${LIBRARY_OUTPUT_PATH}/${PROJECT_NAME}.lib")
    #    target_link_options(${PROJECT_NAME} PRIVATE "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.def")
-elseif (${ANDROID})
+elseif (${__ANDROID__})
 
    target_link_libraries(${PROJECT_NAME} PRIVATE ${library_references})
 
