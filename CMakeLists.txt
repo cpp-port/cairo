@@ -1,6 +1,31 @@
 cmake_minimum_required(VERSION 3.16)
 project(cairo C)
 
+if(__REACTOS__)
+    get_target_property(port_zlib_binary zlib BINARY_DIR)
+    get_target_property(port_zlib_source zlib SOURCE_DIR)
+    set(HAS_PNG ON)
+    file(GLOB cairo_public_headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/cairo/*.h")
+    foreach(header IN LISTS cairo_public_headers)
+        get_filename_component(header_name "${header}" NAME)
+        if(NOT header_name STREQUAL "cairo-features.h")
+            configure_file("${header}" "${CMAKE_CURRENT_BINARY_DIR}/generated/cairo/${header_name}" COPYONLY)
+        endif()
+    endforeach()
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/cairo/cairo-features.h")
+    file(READ "${CMAKE_CURRENT_SOURCE_DIR}/include/cairo/cairo-features.h" features)
+    string(REPLACE "#define CAIRO_HAS_GL_SURFACE 1" "" features "${features}")
+    string(REPLACE "#define CAIRO_HAS_WGL_FUNCTIONS 1" "" features "${features}")
+    file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generated/cairo/cairo-features.h" CONTENT "${features}")
+    list(APPEND library_include_directories
+        "${port_zlib_binary}" "${port_zlib_source}/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../pixman/include/pixman"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../freetype/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../../imaging/port_png/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../../imaging/port_png/include/port_png"
+        "${WORKSPACE_FOLDER}/operating_system/operating_system-windows/configuration")
+endif()
+
 
 message("CMake <<== Trash : ${PROJECT_NAME}")
 
@@ -390,3 +415,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${library_include_directories
 
 
 
+
+if(__REACTOS__)
+    target_include_directories(cairo BEFORE PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated" "${CMAKE_CURRENT_BINARY_DIR}/generated/cairo")
+    target_link_libraries(cairo PRIVATE pixman freetype png zlib msimg32 gdi32 user32)
+endif()
